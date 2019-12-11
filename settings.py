@@ -10,3 +10,6 @@ class Settings:
     def config_path_for(self, scope: str, filename: str) -> str:
         return os.path.join(self.project_root, "config", scope, filename)
 
+    def output_path_for(self, scope: str, filename: str) -> str:
+        return os.path.join(self.project_root, "output", scope, filename)
+
