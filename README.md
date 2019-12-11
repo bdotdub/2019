@@ -8,6 +8,8 @@ Python isn't my primary language (Go & Ruby would have been faster!). My main se
 
 If you have any suggestions for improvements, I'd love to hear them! Feel free to email me or open a Github issue :)
 
+Relatedly, code quality is quick and hacky just to get the data I need. Not reflective of "real" code ;)
+
 ## Project Structure
 
 * `config` – where all the config files go. In our case, we need things like Google API client credentials. It also stores some credentials. 
