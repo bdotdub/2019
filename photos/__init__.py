@@ -42,6 +42,7 @@ def main():
     previous_year = None
     while True:
         i += 1
+        # pylint: disable=no-member
         items = service.mediaItems().list(pageToken=page_token,
                                           pageSize=100).execute()
         with open('last_request.txt', 'w') as file:
