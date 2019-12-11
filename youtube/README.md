@@ -2,6 +2,8 @@
 
 ## Required Data
 
+The following should be stored in the `data` directory
+
 * `watch-history.json` – JSON file from a Youtube export from [Google Takeout](https://takeout.google.com/)
     * This contains all of the videos, link, and channel info for all of your watched videos.
     * **HOWEVER**, this file only shows you what videos you watched, but not how much of the video you watched
