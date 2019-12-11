@@ -10,6 +10,7 @@ If you have any suggestions for improvements, I'd love to hear them! Feel free t
 
 ## Project Structure
 
-`TODO`
-
-* `config`
+* `config` – where all the config files go. In our case, we need things like Google API client credentials. It also stores some credentials. 
+* `youtube` – Youtube watch history parsing & output
+* `photos` – utilities to pull API data from [Google Photos](https://photos.google.com)
+* `swarm` – TBD
