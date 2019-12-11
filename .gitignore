@@ -3,8 +3,7 @@ config/**/*json
 config/**/*pickle
 */data/*
 output/*/*
-./*json
-last_request.txt
+logs/*
 
 ## Pulled from https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
 
