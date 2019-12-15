@@ -1,18 +1,16 @@
-import os, sys
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-
 import json
-import pickle
+import os
 import os.path
-import dateutil.parser
+import sys
 import time
 
-from settings import Settings
-
+import dateutil.parser
 from googleapiclient.discovery import build
 
-from auth.google import CredentialManager
+from auth.google_api import CredentialManager
+from settings import Settings
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 
 def main(settings: Settings):
@@ -41,7 +39,7 @@ def main(settings: Settings):
         d = dateutil.parser.parse(things[-1]["mediaMetadata"]["creationTime"])
         print(f"{i}: got a bunch of photos: {len(things)} {d.year}")
         time.sleep(1)
-    with open(settings.output_path_for("all_photos.json"), "w") as file:
+    with open(settings.output_path_for("photos", "all_photos.json"), "w") as file:
         json.dump(things, file, indent=2)
 
 
