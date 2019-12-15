@@ -1,11 +1,12 @@
-from argparse import ArgumentParser
-from bs4 import BeautifulSoup, element
-from typing import Optional
-from urllib.parse import parse_qs, urlparse
 import csv
 import json
 import logging
 import re
+from argparse import ArgumentParser
+from typing import Optional
+from urllib.parse import parse_qs, urlparse
+
+from bs4 import BeautifulSoup, element
 
 parser = ArgumentParser(description="Outputs data about Youtube watch time")
 parser.add_argument("--verbose", action="store_true", help="prints verbose")
@@ -44,7 +45,8 @@ def progress_for_key(element: element.Tag) -> (str, Optional[int], int):
 
     video_length = 0
     video_length_elem = element.find(
-        "span", class_="ytd-thumbnail-overlay-time-status-renderer")
+        "span", class_="ytd-thumbnail-overlay-time-status-renderer"
+    )
     if video_length_elem:
         video_length = parse_video_length(video_length_elem.get_text())
 
@@ -79,11 +81,9 @@ def run():
         if progress is None:
             continue
         watched = round(progress / 100.0 * total_time_in_secs)
-        data.append({
-            "key": key,
-            "watched": watched,
-            "total_length": total_time_in_secs
-        })
+        data.append(
+            {"key": key, "watched": watched, "total_length": total_time_in_secs}
+        )
 
     # Temporary fix. There is currently a mismatch between wh and the html page
     while True:
@@ -107,7 +107,7 @@ def run():
     #     json.dumps([
     #         d for d in data if "timestamp" in d and "2019-" in d["timestamp"]
     #     ]))
-    with open('out.csv', 'w') as out:
+    with open("out.csv", "w") as out:
         w = csv.DictWriter(out, data[0].keys())
         w.writeheader()
         w.writerows(data)

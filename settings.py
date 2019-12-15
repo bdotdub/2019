@@ -1,4 +1,4 @@
-import os, sys
+import os
 
 
 class Settings:
@@ -12,4 +12,3 @@ class Settings:
 
     def output_path_for(self, scope: str, filename: str) -> str:
         return os.path.join(self.project_root, "output", scope, filename)
-
