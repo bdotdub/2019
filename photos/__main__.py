@@ -7,10 +7,10 @@ import time
 import dateutil.parser
 from googleapiclient.discovery import build
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+
 from auth.google_api import CredentialManager
 from settings import Settings
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 
 def main(settings: Settings):
