@@ -1,6 +1,6 @@
 # 2019
 
-This repo is a collection of scripts and utilities that I used to create my [2019 "Year in Review" post](https://2019.bwong.net)
+This repo is a collection of scripts and utilities that I used to create my [2019 "Year in Review" post](https://posts.bwong.net/posts/2019-year-in-review/?utm_source=github&utm_medium=readme&utm_campaign=year_in_review)
 
 ## Language Choice
 
