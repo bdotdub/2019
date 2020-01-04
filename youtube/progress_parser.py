@@ -5,7 +5,13 @@ from urllib.parse import parse_qs, urlparse
 import csv
 import json
 import logging
+import os
 import re
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+
+from settings import Settings
 
 parser = ArgumentParser(description="Outputs data about Youtube watch time")
 parser.add_argument("--verbose", action="store_true", help="prints verbose")
@@ -52,13 +58,13 @@ def progress_for_key(element: element.Tag) -> (str, Optional[int], int):
     return key, progress, video_length
 
 
-def run():
+def run(settings: Settings):
     data = []
 
-    with open("data/Youtube.htm") as fp:
+    with open(f"{settings.project_root}/youtube/data/Youtube.htm") as fp:
         soup = BeautifulSoup(fp, features="lxml")
 
-    with open("data/watch-history.json") as wh:
+    with open(f"{settings.project_root}/youtube/data/watch-history.json") as wh:
         watch_history = json.load(wh)
 
     watch_history_by_key = {}
@@ -104,11 +110,11 @@ def run():
         if "subtitles" not in history_item:
             continue
         item["channel"] = history_item["subtitles"][0]["name"]
-    with open("out.csv", "w") as out:
+    with open(settings.output_path_for("youtube", "out.csv"), "w") as out:
         w = csv.DictWriter(out, data[0].keys())
         w.writeheader()
         w.writerows(data)
 
 
 if __name__ == "__main__":
-    run()
+    run(Settings())
