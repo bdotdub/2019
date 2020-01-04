@@ -1,12 +1,11 @@
+from argparse import ArgumentParser
+from bs4 import BeautifulSoup, element
+from typing import Optional
+from urllib.parse import parse_qs, urlparse
 import csv
 import json
 import logging
 import re
-from argparse import ArgumentParser
-from typing import Optional
-from urllib.parse import parse_qs, urlparse
-
-from bs4 import BeautifulSoup, element
 
 parser = ArgumentParser(description="Outputs data about Youtube watch time")
 parser.add_argument("--verbose", action="store_true", help="prints verbose")
@@ -102,11 +101,9 @@ def run():
         history_item = watch_history_by_key[key].pop(0)
         item["title"] = history_item["title"]
         item["timestamp"] = history_item["time"]
+        if "subtitles" not in history_item:
+            continue
         item["channel"] = history_item["subtitles"][0]["name"]
-    # print(
-    #     json.dumps([
-    #         d for d in data if "timestamp" in d and "2019-" in d["timestamp"]
-    #     ]))
     with open("out.csv", "w") as out:
         w = csv.DictWriter(out, data[0].keys())
         w.writeheader()

@@ -4,10 +4,6 @@ import json
 with open(sys.argv[1], "r") as r:
     obj = json.loads(r.read())
 
-# for o in obj:
-#     if "width" not in o["mediaMetadata"]:
-#         print(o)
-
 
 def metadataFor(o, field):
     md = o["mediaMetadata"]
@@ -28,4 +24,4 @@ sanitized = [
     if "width" in o["mediaMetadata"]
 ]
 
-print(json.dumps(sanitized))
+print(json.dumps(sanitized, indent=4))
