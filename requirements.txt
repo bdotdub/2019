@@ -1,4 +1,0 @@
-BeautifulSoup4==4.8.1
-google-api-python-client
-google_auth_oauthlib
-python-dateutil
